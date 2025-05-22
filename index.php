@@ -3,7 +3,7 @@ session_start();
 
 require_once "pdo.php";
 
-$stmt = $pdo->query("SELECT autos_id,make,model, year, mileage FROM autos");
+$stmt = $pdo->query("SELECT auto_id,make,model, year, mileage FROM autos");
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
@@ -48,7 +48,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     echo("</td><td>");
                     echo($row['mileage']);
                     echo("</td><td>");
-                    echo('<a href="edit.php?autos_id='.$row['autos_id'].'">Edit</a> / <a href="delete.php?autos_id='.$row['autos_id'].'">Delete</a>');
+                    echo('<a href="edit.php?auto_id='.$row['auto_id'].'">Edit</a> / <a href="delete.php?auto_id='.$row['auto_id'].'">Delete</a>');
                     echo("</td></tr>\n");
                 }
                 echo "</table>";
