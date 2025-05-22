@@ -19,29 +19,29 @@
         }
         $sql = "UPDATE autos SET make = :make,
                 model = :model, year = :year,mileage=:mileage
-                WHERE autos_id = :autos_id";
+                WHERE auto_id = :auto_id";
         $stmt = $pdo->prepare($sql);
         $stmt->execute(array(
                 ':make' => $_POST['make'],
                 ':model' => $_POST['model'],
                 ':year' => $_POST['year'],
                 ':mileage' => $_POST['mileage'],
-                ':autos_id' => $_GET['autos_id'])
+                ':auto_id' => $_GET['auto_id'])
         );
         $_SESSION['success'] = 'Record updated';
         header('Location: index.php');
         return;
     }
 
-    if (!isset($_GET['autos_id']))
+    if (!isset($_GET['auto_id']))
     {
-        $_SESSION['error'] = "Missing autos_id";
+        $_SESSION['error'] = "Missing auto_id";
         header('Location: index.php');
         return;
     }
 
-    $stmt = $pdo->prepare("SELECT * FROM autos where autos_id = :xyz");
-    $stmt->execute(array(":xyz" => $_GET['autos_id']));
+    $stmt = $pdo->prepare("SELECT * FROM autos where auto_id = :xyz");
+    $stmt->execute(array(":xyz" => $_GET['auto_id']));
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($row === false)
     {
@@ -77,7 +77,7 @@
         <p>Model<input type="text" name="model" size="40" value="<?php echo $row['model'] ?>"/></p>
         <p>Year<input type="text" name="year" size="10" value="<?php echo $row['year'] ?>"/></p>
         <p>Mileage<input type="text" name="mileage" size="10" value="<?php echo $row['mileage'] ?>"/></p>
-        <input type="hidden" name="autos_id" value="0">
+        <input type="hidden" name="auto_id" value="0">
         <input type="submit" value="Save">
         <input type="submit" name="cancel" value="Cancel">
     </form>
