@@ -10,7 +10,7 @@ if (isset($_POST['make']) && isset($_POST['model']) && isset($_POST['year']) && 
 {
     if (strlen($_POST['make']) < 1 || strlen($_POST['model']) < 1 || strlen($_POST['year']) < 1 || strlen($_POST['mileage']) < 1)
     {
-        $_SESSION['error'] = 'All values are required';
+        $_SESSION['error'] = 'All fields are required';
         header("Location: add.php");
         return;
     }
