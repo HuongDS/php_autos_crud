@@ -13,7 +13,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <!DOCTYPE html>
 <html>
 <head>
-<title>Ambika Patidar's Login Page b3d29210</title>
+<title>Ambika Patidar's Login Page 86892ef7</title>
 
 <?php require_once "bootstrap.php"; ?>
 
